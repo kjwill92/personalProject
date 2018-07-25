@@ -1,0 +1,14 @@
+/* .display{
+    border: 2px solid black
+} */
+.displayTwo{
+    border: 2px solid greenyellow
+}
+button {
+    cursor: pointer
+}
+/* img {
+    display: flex;
+    align-items: left;
+    
+} */
