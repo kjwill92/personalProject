@@ -91,7 +91,7 @@ class Aws extends Component {
               }
           </Dropzone> 
           <div>
-          <img src={ this.state.url } width='200px' />
+          <img src={ this.state.url } width='200px' alt="dropzone"/>
           </div>
           
         </div>

@@ -4,6 +4,13 @@ import DisplayTwo from './../DisplayTwo/DisplayTwo';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {removeOrders} from './../../ducks/reducer';
+import styled from 'styled-components';
+
+const OrderContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
 
 class Orders extends Component {
     constructor(){
@@ -56,7 +63,9 @@ class Orders extends Component {
                 Orders
                 <Link to="/admin/showcase"><button>View Products List</button></Link>
                 <hr/>
+                <OrderContainer>
                 {orderDisplay}
+                </OrderContainer>
             </div>
         )
     }
