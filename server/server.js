@@ -6,12 +6,16 @@ const controller = require('./controller')
 const aws = require('aws-sdk');
 
 const app = express();
+
+app.use(express.static(__dirname+'/../build'))
+
 app.use(bodyParser.json());
 
 massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db);
     console.log('db connected')
 })
+
 
 const {
   S3_BUCKET
