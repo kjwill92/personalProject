@@ -4,19 +4,26 @@ const bodyParser = require('body-parser');
 const massive = require('massive');
 const controller = require('./controller')
 const aws = require('aws-sdk');
+const session = require('express-session');
 
 const app = express();
 
 app.use(express.static(__dirname+'/../build'))
 
 app.use(bodyParser.json());
+//auth stuff
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}))
 
 massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db);
     console.log('db connected')
 })
 
-
+//AWS-S3 stuff
 const {
   S3_BUCKET
 } = process.env
@@ -65,7 +72,10 @@ app.get('/api/products', controller.getAllProducts)
 //Request page
 app.post('/api/orders', controller.makeRequest)
 
-//-->>> auth0??????
+//-->>> auth0
+app.get('/auth/callback', controller.authCallback)
+app.get('/api/user-data', controller.userData)
+app.get('/api/logout', controller.logout)
 
 
 const port = process.env.SERVER_PORT || 3076;

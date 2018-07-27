@@ -11,15 +11,17 @@ const HomePage = styled.div`
     overflow: auto;
 `
 
+
 class App extends Component {
   render() {
     
     return (
       <HomePage>
-      <div className="App">
+        <div className="App">
       <Nav/>
         {routes}
-      </div>
+        </div>
+        
       </HomePage>
     );
   }

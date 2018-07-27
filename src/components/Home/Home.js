@@ -44,11 +44,12 @@ class Home extends Component {
         })
         return (
            <div>
-                Welcome to Whatever I'll call this Page!!
+                Welcome to Hilary Bakes!
                 <hr/>
-                Check my Ish out
+                Come check my Ish out
                 <ProductContainer>
                 {productDisplay}
+                <br/>
                 <Link to="/request"><button>Request an Order</button></Link>
                 </ProductContainer>
             </div>

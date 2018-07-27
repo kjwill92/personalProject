@@ -8,13 +8,18 @@ import Orders from './components/Orders/Orders';
 import Edit from './components/Edit/Edit';
 
 
+  
+
+
 export default (
     <Switch>
+        <Route path="/admin/showcase"  component={Showcase} />
+        <Route path="/admin/orders"  component={Orders} />
         <Route path="/request" component={Request} />
         <Route exact path="/"  component={Home} />
         <Route path="/about"  component={About} />
-        <Route path="/admin/showcase"  component={Showcase} />
-        <Route path="/admin/orders"  component={Orders} />
         <Route path="/admin/edit/:id"  component={Edit} />
+       
     </Switch>
 ) 
+

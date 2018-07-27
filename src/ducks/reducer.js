@@ -1,11 +1,15 @@
 const initialState = {
     products: [],
-    orders: []
+    orders: [],
+    //auth
+    user: {}
 }
 const EDIT_PRODUCTS = 'EDIT_PRODUCTS';
 const REMOVE_PRODUCTS = 'REMOVE_PRODUCTS';
 const REMOVE_ORDERS = 'REMOVE_ORDERS';
 const ADD_PRODUCT = 'ADD_PRODUCT';
+//auth
+const USER_DATA = 'USER_DATA';
 
 export default function reducer(state = initialState, action){
     switch(action.type){
@@ -19,6 +23,9 @@ export default function reducer(state = initialState, action){
             let newProducts = state.products.slice()
             newProducts.push(action.payload)
             return Object.assign({}, state, {products: newProducts})
+        //auth
+        case USER_DATA:
+            return Object.assign({}, state, {user: action.payload})
         default:
             return state;
     }
@@ -46,5 +53,12 @@ export function addProduct(products){
     return{
         type: ADD_PRODUCT,
         payload: products
+    }
+}
+//auth
+export function getUserData(user){
+    return {
+        type: USER_DATA,
+        payload: user
     }
 }

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Display from './../Display/Display';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {editProducts, addProduct} from './../../ducks/reducer';
+import {editProducts, addProduct, getUserData} from './../../ducks/reducer';
 import Aws from './../../Aws';
 import styled from 'styled-components';
 
@@ -20,23 +20,28 @@ class Showcase extends Component {
             products: [],
             product_name: '',
             product_pic: '',
-            description: ''  
+            description: '',
+            user: false
         }
         this.newProduct = this.newProduct.bind(this)
         this.handleProdName = this.handleProdName.bind(this)
         this.handleProdPic = this.handleProdPic.bind(this)
         this.handleDescrip = this.handleDescrip.bind(this)
     }
-    gettProducts(){
-        axios.get('/api/admin/products').then(res => {
-            this.setState({
-                products: res.data
-            })
-        })
-    }
+    // gettProducts(){
+    //     axios.get('/api/admin/products').then(res => {
+    //         this.setState({
+    //             products: res.data
+    //         })
+    //     })
+    // }
+    
     componentDidMount() {
-        axios.get('/api/admin/products').then(res => {
-          this.props.editProducts(res.data)
+        axios.get('/api/user-data').then(res=>{
+            this.props.getUserData(res.data)
+            axios.get('/api/admin/products').then(res => {
+              this.props.editProducts(res.data)
+            })
         })
     }
     newProduct(){
@@ -61,6 +66,7 @@ class Showcase extends Component {
         })
     }
     
+    
 
     render(){
         let productDisplay = this.props.products.map((product) =>{
@@ -76,7 +82,9 @@ class Showcase extends Component {
             )
         })
         return (
-            <div>
+        
+            this.props.user.auth_id ? <div>
+
                 Showcase
                 <Link to="/admin/orders"><button>Go to Orders</button></Link>
                 <hr/>
@@ -93,13 +101,15 @@ class Showcase extends Component {
                 <ProductContainer>
                 {productDisplay}
                 </ProductContainer>
-            </div>
+            </div> 
+        : <h1>No login....no access to the goods</h1>
         )
     }
 }
 function mapStateToProps(state){
     return {
-        products: state.products
+        products: state.products,
+        user: state.user
     }
 }
-export default connect(mapStateToProps, {editProducts, addProduct})(Showcase);    
+export default connect(mapStateToProps, {editProducts, addProduct, getUserData})(Showcase);    

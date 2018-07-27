@@ -9,6 +9,7 @@
     "dotenv": "^6.0.0",
     "dropzone": "^5.5.1",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "massive": "^5.1.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
@@ -29,12 +30,11 @@
   },
   "main": "server/server.js",
   "proxy": {
-    "/api":{
+    "/api": {
       "target": "http://localhost:3076"
     },
-    "/auth":{
+    "/auth": {
       "target": "http://localhost:3076"
     }
   }
 }
-

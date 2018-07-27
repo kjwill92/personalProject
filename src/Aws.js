@@ -8,7 +8,9 @@ const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    
+    > div {
+      display: flex;
+    }
 `
 
 class Aws extends Component {
@@ -64,8 +66,8 @@ class Aws extends Component {
     render() {
       return (
         <ProductContainer>
-        <div className="Aws">
          <h4>Upload Pic ->> {this.state.url}</h4>
+        <div className="Aws">
           {/* <h4>{this.state.url}</h4> */}
           <Dropzone 
             onDropAccepted={this.addFile}
