@@ -21,7 +21,7 @@ export default function Nav(){
     
     
     let {REACT_APP_DOMAIN, REACT_APP_CLIENT_ID} = process.env;
-    let redirectUri = encodeURIComponent('http://localhost:3076/auth/callback')
+    let redirectUri = encodeURIComponent(`${window.location.origin}/auth/callback`)
     console.log('env ', process.env.REACT_APP_DOMAIN, REACT_APP_CLIENT_ID)
     return(
         <NavStuff>
