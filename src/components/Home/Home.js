@@ -9,7 +9,15 @@ const ProductContainer = styled.div`
     flex-direction: column;
     align-items: center;
 `
-
+const Button = styled.button`
+  background: hotpink;
+  border-radius: 8px;
+  border: 2px solid black;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  /* box-shadow: 2px 2px 5px black */
+`
 
 class Home extends Component {
     constructor(){
@@ -44,13 +52,14 @@ class Home extends Component {
         })
         return (
            <div>
-                Welcome to Hilary Bakes!
-                <hr/>
-                Come check my Ish out
+                <h2>Welcome to Hilary Bakes!</h2>
+                Come check what I love to do...
+                <br/>
                 <ProductContainer>
                 {productDisplay}
                 <br/>
-                <Link to="/request"><button>Request an Order</button></Link>
+                <Link to="/request"><Button>Request an Order</Button></Link>
+                <br/>
                 </ProductContainer>
             </div>
         )

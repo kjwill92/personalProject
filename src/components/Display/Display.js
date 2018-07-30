@@ -11,15 +11,22 @@ const Product = styled.div`
         margin: 8px;
         width: 900px;
         display: flex;
-        padding-left: 10px;
+        padding-left: 6px;
         > div {
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 70%
+            width: 50%;
             
         }
     `
+const Button = styled.button`
+    background: red;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    padding: 4px;
+`
 
 
 export default function Display(props){
@@ -27,8 +34,8 @@ export default function Display(props){
 const Image = styled.div`
         background-image: url(${props.product_pic});
         background-size: cover;
-        width: 400px;
-        height: 300px;
+        width: 500px;
+        height: 400px;
         background-repeat: no-repeat;
 `
     return (
@@ -36,9 +43,13 @@ const Image = styled.div`
             <Image/>
             
             <div>
-            <h2>{props.product_name}</h2>
+            <br/>
+            <br/>
+            <br/>
+            <h1>{props.product_name}</h1>
             <p>{props.description}</p>
-            { props.editable && <Link to={`/admin/edit/${props.id}`}><button>Edit/Delete</button></Link> }
+            <br/>
+            { props.editable && <Link to={`/admin/edit/${props.id}`}><Button>Edit/Delete</Button></Link> }
             </div>
         </Product>
     )

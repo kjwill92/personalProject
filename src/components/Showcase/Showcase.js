@@ -12,6 +12,21 @@ const ProductContainer = styled.div`
     flex-direction: column;
     align-items: center;
 `
+const Button = styled.button`
+  background: hotpink;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  padding: 5px;
+`
+const ButtonTwo = styled.button`
+  background: magenta;
+  border: 2px solid black;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  padding: 8px;
+`
 
 class Showcase extends Component {
     constructor(){
@@ -84,9 +99,9 @@ class Showcase extends Component {
         return (
         
             this.props.user.auth_id ? <div>
-
-                Showcase
-                <Link to="/admin/orders"><button>Go to Orders</button></Link>
+                <br/>
+                <Link to="/admin/orders"><ButtonTwo>View Orders</ButtonTwo></Link>
+                <br/>
                 <hr/>
                 Upload a New Product
                 <br/>
@@ -96,7 +111,7 @@ class Showcase extends Component {
                 <br/>
                 <textarea name="" onChange={this.handleDescrip} value={this.state.description} id="" cols="70" rows="10" placeholder="Your text goes here..."></textarea>
                 <br/>
-                <button onClick={this.newProduct}>Add New</button>
+                <Button onClick={this.newProduct}>Add New</Button>
                 <hr/>
                 <ProductContainer>
                 {productDisplay}

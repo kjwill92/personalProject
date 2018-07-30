@@ -3,6 +3,37 @@ import axios from 'axios';
 import {editProducts, removeProducts} from './../../ducks/reducer';
 import {connect} from 'react-redux';
 import swal from 'sweetalert2';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  background: green;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  padding: 5px;
+`
+const ButtonTwo = styled.button`
+  background: red;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  padding: 5px;
+`
+const Editor = styled.div`
+    border: 2px solid black;
+    width: 500px;
+    background: rgba(200,50,20, .2);
+    > h2 {
+        text-decoration: underline solid rgb(68, 68, 68);
+    }
+`
+const Page = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    top: 100px;
+`
 
 
 class Edit extends Component {
@@ -94,18 +125,22 @@ class Edit extends Component {
 
     render(){
         return (
-            <div>
-                Edit
-                <hr/>
+            <Page>
+            <Editor>
+                <br/>
+                <h2>Product Editor</h2>
                 <input type="text" onChange={this.handleName} value={this.state.product_name} placeholder="prod name"/>
                 <br/>
                 <input type="text" onChange={this.handlePic} value={this.state.product_pic} placeholder="prod pic"/>
                 <br/>
                 <textarea name="" onChange={this.handleDescrip} value={this.state.description} placeholder="prod descrip" id="" cols="70" rows="10"></textarea>
                 <br/>
-                <button onClick={this.updateProduct.bind(this)}>Update</button>
-                <button onClick={this.deleteProduct.bind(this)}>Delete this Ish</button>
-            </div>
+                <Button onClick={this.updateProduct.bind(this)}>Update</Button>
+                <ButtonTwo onClick={this.deleteProduct.bind(this)}>Delete this Ish</ButtonTwo>
+                <br/>
+                <br/>
+            </Editor>
+            </Page>
         )
     }
 }

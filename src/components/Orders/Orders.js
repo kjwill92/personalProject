@@ -11,6 +11,14 @@ const OrderContainer = styled.div`
     flex-direction: column;
     align-items: center;
 `
+const Button = styled.button`
+  background: magenta;
+  border: 2px solid black;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  padding: 8px;
+`
 
 class Orders extends Component {
     constructor(){
@@ -60,9 +68,9 @@ class Orders extends Component {
         })
         return (
             <div>
-                Orders
-                <Link to="/admin/showcase"><button>View Products List</button></Link>
-                <hr/>
+                <br/>
+                <Link to="/admin/showcase"><Button>View Products List</Button></Link>
+                <br/>
                 <OrderContainer>
                 {orderDisplay}
                 </OrderContainer>

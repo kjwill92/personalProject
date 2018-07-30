@@ -13,6 +13,18 @@ const Order = styled.div`
     width: 900px;
     display: flex;
     flex-direction: column;
+    > div {
+    > h2 { 
+        text-decoration: underline solid black;
+    }}
+`
+const Button = styled.button`
+  background: red;
+  /* border: 2px solid black; */
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  padding: 8px;
 `
 
 const DisplayTwo = (props) => {
@@ -26,7 +38,7 @@ const DisplayTwo = (props) => {
                 <h3>{props.phone}</h3>
                 <h3>{props.date.split('T')[0]}</h3>
                 <h3>{props.content}</h3>
-                <button onClick={() => props.removeOrder(props.id, props.customer)}>Completed</button>
+                <Button onClick={() => props.removeOrder(props.id, props.customer)}>Completed</Button>
             </div>
         </Order>
     )
